@@ -32,8 +32,16 @@ button:focus {
     color: white;
     font-family: 'Lato', sans-serif;
     font-weight: 100;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    transition: 1s;
+    border-radius: 5px;
+    margin: 0.5em;
 
+}
+.addBtn:hover {
+    background-color: tomato;
+    cursor: pointer;
+    
 }
 
 .bookList {
@@ -60,6 +68,18 @@ button:focus {
 
 .bookCard > * {
     font-family: 'Lato', sans-serif;
+}
+
+.closeCard {
+    align-self: flex-end;
+    font-size: 2rem;
+    color: #b9b9b9;
+    margin: 0.2em 0.2em 0 0;
+}
+.closeCard:hover {
+    animation: fadein 0.5s;
+    color: tomato;
+    cursor: pointer;
 }
 
 .bookCard h1 {
@@ -164,8 +184,7 @@ input[type=radio] {
     color: white;
     background: tomato;
     animation: fadein 0.3s;
-  }.modalAnim {
-    transition: 5s ease-in;
+  
 }
 
   .radio-group {
@@ -187,6 +206,8 @@ input[type=radio] {
   button.add:hover {
       background-color: tomato;
       color: white;
+      cursor: pointer;
+      animation: fadein 0.3s;
   }
   
   

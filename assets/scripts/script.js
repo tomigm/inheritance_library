@@ -43,6 +43,9 @@ function addBookToLibrary () {
 function createCard(book) {
 let card = document.createElement('div');
 card.classList.add('bookCard');
+let cardClose = document.createElement('span');
+cardClose.classList.add('closeCard');
+cardClose.innerHTML = "&times";
 let cardTitle = document.createElement('h1');
 cardTitle.textContent = book.title;
 let cardAuthor = document.createElement('h2');
@@ -54,18 +57,24 @@ cardPages.textContent = book.pages;
 let cardRead = document.createElement('a');
 cardRead.textContent = book.read;
 
+card.appendChild(cardClose)
 card.appendChild(cardTitle);
 card.appendChild(cardAuthor);
 card.appendChild(cardPages);
 card.appendChild(cardRead);
+
+let bookIndex = myLibrary.indexOf(book);
+
+card.dataset.index = bookIndex;
 generatedList.appendChild(card);
+
 }
 
 function removeBooks(){
  // check if booklist has childs
   //if yes > while booklist have child, remove child
 if(generatedList.hasChildNodes()) {
-  let listLastChild;
+  
   while (generatedList.hasChildNodes()) {
     generatedList.removeChild(generatedList.lastChild);
   }
