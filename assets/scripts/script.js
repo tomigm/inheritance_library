@@ -89,41 +89,30 @@ function render() {
 
 
 
-/*
-function render() {
-    let myLibraryLength = myLibrary.length;
-    let book;
-    let listHTML = "<ul>";
-    
+// Get the modal
+const bookModal = document.getElementById("bookModal");
 
-    for(book = 0; book < myLibraryLength; book++ ) {
-        listHTML += "<li>" + myLibrary[book] + "</li>";   
-    }
-    listHTML += "</ul>"
-    
-    return generatedList.innerHTML = listHTML;
+// Get the button that opens the modal
+const addBtn = document.getElementById("addBtn");
+
+// Get the <span> element that closes the modal
+const closeModal = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+addBtn.onclick = function() {
+  bookModal.style.display = "block";
 }
 
-*/
-
-/*
-1) If you haven’t already, set up your project with skeleton HTML/CSS and JS files.
-2) All of your book objects are going to be stored in a simple array, so add a function
-to the script (not the constructor) that can take user’s input and store the new book 
-objects into an array. Your code should look something like this:
-
-let myLibrary = [];
-
-function Book() {
-  the constructor...
+// When the user clicks on <span> (x), close the modal
+closeModal.onclick = function() {
+  bookModal.style.display = "none";
 }
 
-function addBookToLibrary() {
-  do stuff here
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == bookModal) {
+      bookModal.style.display = "none";
+  }
 }
 
-3) Hook the array up to your HTML with a render() function that loops through the array and displays each book on the page. 
-You can display them in some sort of table, or each on their own “card”. 
-It might help for now to manually add a few books to your array so you can see the display.
 
-*/
