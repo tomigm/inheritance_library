@@ -82,13 +82,28 @@ button:focus {
 
 
 
+
+.modal{
+    display: flex;
+    background-color: rgba(72, 72, 72, 0.12);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+
+}
+
 .addBookModal {
     display: flex;
     flex-direction: column;
+   
     background-color: #f1f1f1;
     border-radius: 10px;
     position: absolute;
-    left:0;
+    top: 0;
+    
+    
+    
    
 }
 
@@ -149,8 +164,9 @@ input[type=radio] {
     color: white;
     background: tomato;
     animation: fadein 0.3s;
-  }
-  
+  }.modalAnim {
+    transition: 5s ease-in;
+}
 
   .radio-group {
     border: solid 1px gray;
@@ -168,4 +184,9 @@ input[type=radio] {
       margin: 1em;
   }
 
+  button.add:hover {
+      background-color: tomato;
+      color: white;
+  }
+  
   

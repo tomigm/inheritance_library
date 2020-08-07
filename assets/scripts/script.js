@@ -90,7 +90,7 @@ function render() {
 
 
 // Get the modal
-const bookModal = document.getElementById("bookModal");
+const bookModal = document.getElementById("modal");
 
 // Get the button that opens the modal
 const addBtn = document.getElementById("addBtn");
@@ -100,7 +100,8 @@ const closeModal = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 addBtn.onclick = function() {
-  bookModal.style.display = "block";
+  bookModal.style.display = "flex";
+  bookModal.classList.add = ".modalAnim"
 }
 
 // When the user clicks on <span> (x), close the modal
