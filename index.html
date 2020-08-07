@@ -27,15 +27,15 @@
                     </div>
 
                     <div class="radio-group">
-                        <input type="radio" id="readedInput" name="selector" value="yes">
+                        <input type="radio" id="readedInput" name="readSelector" value="yes">
                         <label for="readedInput">Readed</label>
-                        <input type="radio" id="unreadedInput" name="selector" value="no">     
+                        <input type="radio" id="unreadedInput" name="readSelector" value="no">     
                         <label for="unreadedInput">Unreaded</label>
                         
                     </div>
                 
                 </form>
-                <button class="add">Add</button>
+                <button class="add" onclick = "addBookToLibrary ()">Add</button>
             </div>
         </div>
         <section id="bookList" class="bookList">

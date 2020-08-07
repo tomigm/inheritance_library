@@ -16,13 +16,22 @@ Book.prototype.info = function() {
 }
 
 function addBookToLibrary () {
-    let title = prompt('title');
-    let author = prompt('author');
-    let pages = prompt('pages');
-    let read = prompt('read');
+    let title = document.getElementById('titleInput').value;
+    let author =document.getElementById('authorInput').value;
+    let pages = document.getElementById('pagesInput').value;
+    let read;
+    let readed = document.getElementById('readedInput');
+    let unreaded = document.getElementById('unreadedInput');
+    if (readed.checked) {
+      read = readed.value;
+    }
 
+    else if (unreaded.checked){
+      read = unreaded.value
+    }
+    
     myLibrary.push(new Book (title, author, pages, read))
-    render();
+    render()
     console.log(myLibrary);
 
 
@@ -124,5 +133,14 @@ window.onclick = function(event) {
       bookModal.style.display = "none";
   }
 }
+/*
+// CARD REMOVAL
+//usr press close
+const cardRemove = document.getElementsByClassName("closeCard")[0];
 
-
+cardRemove.onclick = function (e) {
+  let cardIndex = e.target.parentNode;
+  let parentCard = document.querySelector(`.card[data.id = ${cardIndex}]`)
+  parentCard.remove();
+}
+*/
