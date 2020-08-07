@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+}
+
+.addBtn {
+    border: none;
+    background-color: #333;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
+    font-size: 2rem;
+
+}
+
+.bookList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bookCard {
+    display: flex;
+    background-color: rgb(218, 218, 218);
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    flex-direction: column;
+    margin: 1em;
+    
+}
+
+.bookCard:last-child {
+    animation: fadein 2s;
+}
+
+.bookCard > * {
+    font-family: 'Lato', sans-serif;
+}
+
+.bookCard h1 {
+    font-size: 2rem;
+}
+
+.bookCard h2 {
+    font-size: 1.5rem;
+}
+
+.bookCard p {
+    font-size: 1rem;
+}
+
+.bookCard a {
+    font-size: 1rem;
+}
