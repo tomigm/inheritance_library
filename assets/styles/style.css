@@ -1,12 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-* {
+body {
     font-family: 'Lato', sans-serif;
 }
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 .wrapper {
     width: 100%;
     display: flex;
@@ -55,7 +63,9 @@
 }
 
 .bookCard h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 300;
 }
 
 .bookCard h2 {
@@ -69,3 +79,77 @@
 .bookCard a {
     font-size: 1rem;
 }
+
+
+
+.addBookModal {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    position: absolute;
+    left:0;
+   
+}
+
+.addBookModal h1 {
+    align-self: center;
+    margin: 1em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type=text]{
+    border-radius: 10px;
+    border: 1px solid rgb(189, 189, 189);
+    margin: 0.5em;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+    
+  }
+  
+  label {
+    color: #333;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 20px;
+    font-size: 0.8rem;
+    
+  }
+  
+  input[type=radio]:checked + label{
+    color: white;
+    background: tomato;
+    animation: fadein 0.3s;
+  }
+  
+
+  .radio-group {
+    border: solid 1px gray;
+    display: inline-block;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  button.add {
+      border:none;
+      border-radius: 10px;
+      background-color: rgb(216, 216, 216);
+      padding: 10px;
+      margin: 1em;
+  }
