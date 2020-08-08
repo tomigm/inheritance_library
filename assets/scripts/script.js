@@ -3,6 +3,8 @@ let listHTML;
 let generatedList = document.getElementById("bookList");
 
 
+// Book Constructor
+
 function Book(title, author, pages, read){
     this.title = title
     this.author = author
@@ -11,13 +13,11 @@ function Book(title, author, pages, read){
     
 }
 
-Book.prototype.info = function() {
-    return this.title + ' by ' + this.author + ', ' + this.pages + ' pages,' + this.read
-}
+// Push books to library ((with information from #MODAL))
 
 function addBookToLibrary () {
     let title = document.getElementById('titleInput').value;
-    let author =document.getElementById('authorInput').value;
+    let author = document.getElementById('authorInput').value;
     let pages = document.getElementById('pagesInput').value;
     let read;
     let readed = document.getElementById('readedInput');
@@ -37,53 +37,7 @@ function addBookToLibrary () {
 
 }
 
-
-
-function createCard(book) {
-let card = document.createElement('div');
-card.classList.add('bookCard');
-let cardClose = document.createElement('span');
-cardClose.classList.add('closeCard');
-cardClose.innerHTML = "&times";
-let cardTitle = document.createElement('h1');
-cardTitle.textContent = book.title;
-let cardAuthor = document.createElement('h2');
-cardAuthor.textContent = book.author;
-
-let cardPages = document.createElement('p');
-cardPages.textContent = book.pages + ' pages';
-let cardElements = document.createElement('div');
-cardElements.classList.add('cardElements');
-
-
-card.appendChild(cardClose)
-cardElements.appendChild(cardTitle);
-cardElements.appendChild(cardAuthor);
-cardElements.appendChild(cardPages);
-card.appendChild(cardElements);
-
-let bookIndex = myLibrary.indexOf(book);
-
-card.dataset.index = bookIndex;
-generatedList.appendChild(card);
-if (book.read == 'yes') {card.classList.add('readState')}
-
-}
-
-function removeBooks(){
- // check if booklist has childs
-  //if yes > while booklist have child, remove child
-if(generatedList.hasChildNodes()) {
-  
-  while (generatedList.hasChildNodes()) {
-    generatedList.removeChild(generatedList.lastChild);
-  }
-  return
-}
-else {return}
-
-}
-
+// Add info to the DOM, first removing elements (for not exponential growing), and then adding new ones
 
 function render() {
   removeBooks();
@@ -97,7 +51,56 @@ function render() {
 
 
 
-//  ADD BOOK MODAL
+function removeBooks(){
+  // check if booklist has childs
+   //if yes > while booklist have child, remove child
+ if(generatedList.hasChildNodes()) {
+   
+   while (generatedList.hasChildNodes()) {
+     generatedList.removeChild(generatedList.lastChild);
+   }
+   return
+ }
+ else {return}
+ 
+ }
+
+function createCard(book) {
+
+  //Create elements, and nest them in order to create each card
+  let card = document.createElement('div');
+  card.classList.add('bookCard');
+  let cardClose = document.createElement('span');
+  cardClose.classList.add('closeCard');
+  cardClose.innerHTML = "&times";
+  let cardTitle = document.createElement('h1');
+  cardTitle.textContent = book.title;
+  let cardAuthor = document.createElement('h2');
+  cardAuthor.textContent = book.author;
+  
+  let cardPages = document.createElement('p');
+  cardPages.textContent = book.pages + ' pages';
+  let cardElements = document.createElement('div');
+  cardElements.classList.add('cardElements');
+  
+  
+  card.appendChild(cardClose)
+  cardElements.appendChild(cardTitle);
+  cardElements.appendChild(cardAuthor);
+  cardElements.appendChild(cardPages);
+  card.appendChild(cardElements);
+  
+  let bookIndex = myLibrary.indexOf(book);
+  
+  card.dataset.index = bookIndex;
+  generatedList.appendChild(card);
+
+  //if marked as read, that card is red
+  if (book.read == 'yes') {card.classList.add('readState')}
+  
+  }
+
+//  Add input #MODAL
 
 // Get the modal
 const bookModal = document.getElementById("modal");
@@ -126,13 +129,15 @@ window.onclick = function(event) {
   }
 }
 
-// CARD REMOVE
+// CARD REMOVE && Read state change
 
 document.addEventListener( "click", cardInteraction );
 
 function cardInteraction(event){
   let closeCard = event.target;
   let card = event.target;
+  
+// Card removal upon click on X
   if(closeCard.tagName == 'SPAN' && closeCard.classList.contains("closeCard")){
       console.log("hi");
       let selectedCard = closeCard.parentElement;
@@ -142,7 +147,7 @@ function cardInteraction(event){
       selectedCard.remove();
       render();
   }
-
+// read state change >
   else if (card.tagName== 'DIV' && card.classList.contains("bookCard")) {
     card.classList.toggle('readState');
     let bookIndex = card.getAttribute('data-index');
@@ -158,5 +163,12 @@ function cardInteraction(event){
   }
 }
 
+// Initial books on page load
 
+function initialBooks() {
+  myLibrary.push(new Book ('1984', 'George Orwell', '325', 'yes'))
+  myLibrary.push(new Book ('Rayuela', 'Julio Cortazar', '736', 'no'))
+  render()
+}
 
+initialBooks();
