@@ -16,14 +16,19 @@ button:focus {
 }
 
 .wrapper {
-    width: 100%;
+    max-width: 1200px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: auto;
 }
 
 .buttons {
     display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .addBtn {
@@ -35,8 +40,8 @@ button:focus {
     font-size: 1.5rem;
     transition: 1s;
     border-radius: 5px;
-    margin: 0.5em;
-
+    padding: 0.5em;
+    width: 100%;
 }
 .addBtn:hover {
     background-color: tomato;
@@ -49,6 +54,7 @@ button:focus {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 70px;
 }
 
 .bookCard {
@@ -135,16 +141,11 @@ button:focus {
 
 .addBookModal {
     display: flex;
-    flex-direction: column;
-   
+    flex-direction: column;   
     background-color: #f1f1f1;
     border-radius: 10px;
     position: absolute;
-    top: 0;
-    
-    
-    
-   
+    top: 55px;   
 }
 
 .close {
