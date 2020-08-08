@@ -51,21 +51,22 @@ let cardAuthor = document.createElement('h2');
 cardAuthor.textContent = book.author;
 
 let cardPages = document.createElement('p');
-cardPages.textContent = book.pages;
+cardPages.textContent = book.pages + ' pages';
+let cardElements = document.createElement('div');
+cardElements.classList.add('cardElements');
 
-let cardRead = document.createElement('a');
-cardRead.textContent = book.read;
 
 card.appendChild(cardClose)
-card.appendChild(cardTitle);
-card.appendChild(cardAuthor);
-card.appendChild(cardPages);
-card.appendChild(cardRead);
+cardElements.appendChild(cardTitle);
+cardElements.appendChild(cardAuthor);
+cardElements.appendChild(cardPages);
+card.appendChild(cardElements);
 
 let bookIndex = myLibrary.indexOf(book);
 
 card.dataset.index = bookIndex;
 generatedList.appendChild(card);
+if (book.read == 'yes') {card.classList.add('readState')}
 
 }
 
@@ -127,11 +128,11 @@ window.onclick = function(event) {
 
 // CARD REMOVE
 
-document.addEventListener( "click", cardRemove );
+document.addEventListener( "click", cardInteraction );
 
-function cardRemove(event){
+function cardInteraction(event){
   let closeCard = event.target;
-  
+  let card = event.target;
   if(closeCard.tagName == 'SPAN' && closeCard.classList.contains("closeCard")){
       console.log("hi");
       let selectedCard = closeCard.parentElement;
@@ -140,6 +141,20 @@ function cardRemove(event){
 
       selectedCard.remove();
       render();
+  }
+
+  else if (card.tagName== 'DIV' && card.classList.contains("bookCard")) {
+    card.classList.toggle('readState');
+    let bookIndex = card.getAttribute('data-index');
+
+      if (myLibrary[bookIndex].read == 'yes') {
+        myLibrary[bookIndex].read = 'no';
+        console.log (myLibrary[bookIndex]);
+      }
+      else if (myLibrary[bookIndex].read == 'no') {
+        myLibrary[bookIndex].read = 'yes';
+        console.log (myLibrary[bookIndex]);
+      }
   }
 }
 

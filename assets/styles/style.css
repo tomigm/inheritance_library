@@ -59,6 +59,8 @@ button:focus {
     border-radius: 5px;
     flex-direction: column;
     margin: 1em;
+    cursor: pointer;
+    position: relative;
     
 }
 
@@ -73,28 +75,45 @@ button:focus {
 
 .closeCard {
     align-self: flex-end;
+    position: absolute;
     font-size: 2rem;
-    color: #b9b9b9;
-    margin: 0.2em 0.2em 0 0;
+    color: white;
+    padding: 0 0.2em;
 }
 .closeCard:hover {
     animation: fadein 0.5s;
-    color: tomato;
+    color: #333;
     cursor: pointer;
+}
+
+.bookCard:hover::before {
+    content: 'Mark as readed';
+    position: relative;
+    bottom: 15px;
+    color: tomato;
+    font-weight: 900;
+    animation: fadein 1.5s;
+}
+
+.cardElements {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
 
 .bookCard h1 {
     font-size: 1.5rem;
     color: white;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 .bookCard h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 100;
 }
 
 .bookCard p {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .bookCard a {
@@ -211,4 +230,25 @@ input[type=radio] {
       animation: fadein 0.3s;
   }
   
-  
+  .readState {
+      background-color: tomato;
+      
+
+  }
+
+  .readState::before{
+    content: 'Readed!';
+    position: relative;
+    bottom: 15px;
+    color: tomato;
+    font-weight: 900;
+  }
+
+  .readState:hover::before{
+    content: 'Mark as unread';
+    
+    position: relative;
+    
+    color: #333;
+    animation: fadein 1.5s;
+  }
