@@ -62,9 +62,10 @@ button:focus {
     
 }
 
+/*
 .bookCard:last-child {
     animation: fadein 2s;
-}
+}*/
 
 .bookCard > * {
     font-family: 'Lato', sans-serif;

@@ -30,24 +30,14 @@ function addBookToLibrary () {
       read = unreaded.value
     }
     
-    myLibrary.push(new Book (title, author, pages, read))
-    render()
+    myLibrary.push(new Book (title, author, pages, read));
+    render();
     console.log(myLibrary);
 
 
 }
 
 
-/*
-  var newDiv = document.createElement("div"); 
-  var newContent = document.createTextNode("Hola!¿Qué tal?"); 
-  newDiv.appendChild(newContent); //añade texto al div creado. 
-
-  // añade el elemento creado y su contenido al DOM 
-  var currentDiv = document.getElementById("div1"); 
-  document.body.insertBefore(newDiv, currentDiv); 
-}
-*/
 
 function createCard(book) {
 let card = document.createElement('div');
@@ -106,6 +96,7 @@ function render() {
 
 
 
+//  ADD BOOK MODAL
 
 // Get the modal
 const bookModal = document.getElementById("modal");
@@ -133,14 +124,24 @@ window.onclick = function(event) {
       bookModal.style.display = "none";
   }
 }
-/*
-// CARD REMOVAL
-//usr press close
-const cardRemove = document.getElementsByClassName("closeCard")[0];
 
-cardRemove.onclick = function (e) {
-  let cardIndex = e.target.parentNode;
-  let parentCard = document.querySelector(`.card[data.id = ${cardIndex}]`)
-  parentCard.remove();
+// CARD REMOVE
+
+document.addEventListener( "click", cardRemove );
+
+function cardRemove(event){
+  let closeCard = event.target;
+  
+  if(closeCard.tagName == 'SPAN' && closeCard.classList.contains("closeCard")){
+      console.log("hi");
+      let selectedCard = closeCard.parentElement;
+      
+      myLibrary.splice(selectedCard.getAttribute('data-index'), 1);
+
+      selectedCard.remove();
+      render();
+  }
 }
-*/
+
+
+
